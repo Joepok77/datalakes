@@ -1,0 +1,32 @@
+services:
+  minio:
+    image: cgr.dev/chainguard/minio:latest
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    volumes:
+      - ./data/minio:/data
+
+  postgres:
+    image: postgres:16
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: tp_user
+      POSTGRES_PASSWORD: tp_password
+      POSTGRES_DB: tp_datalake
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+
+  jupyter:
+    image: jupyter/scipy-notebook:latest
+    ports:
+      - "8888:8888"
+    environment:
+      JUPYTER_TOKEN: datalake
+    volumes:
+      - ./notebooks:/home/jovyan/work

@@ -1,0 +1,12 @@
+# Supports de cours (slides + sujets de TP, non publiés)
+cours/
+
+# Fichiers internes des conteneurs MinIO / PostgreSQL (lourds, recréés par Docker)
+**/data/minio/
+**/data/postgres/
+
+# Client MinIO en ligne de commande (si téléchargé)
+mc.exe
+
+# Jupyter
+.ipynb_checkpoints/
