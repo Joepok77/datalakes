@@ -10,3 +10,6 @@ mc.exe
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Rapports exportés (Word / PDF) : seuls les .md sont versionnés
+rapports/
