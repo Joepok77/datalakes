@@ -1,0 +1,7 @@
+horodatage,source,nb_lignes,fichier
+2026-10-30T10:50:36.190901,postgres_commandes,4,postgres_commandes/2026/10/30/commandes.csv
+2026-10-30T10:56:40.726481,api_clients,10,api_clients/2026/10/30/users.json
+2026-10-30T11:01:20.190684,fichiers_stock,4,fichiers_stock/2026/10/30/stock.csv
+2026-10-30T11:28:43.272555,postgres_commandes,4,postgres_commandes/2026/10/30/commandes.csv
+2026-10-30T11:28:44.130366,api_clients,10,api_clients/2026/10/30/users.json
+2026-10-30T11:28:44.663355,fichiers_stock,4,fichiers_stock/2026/10/30/stock.csv

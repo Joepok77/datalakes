@@ -1,0 +1,5 @@
+id,client_id,produit,quantite,prix_unitaire,date_commande
+1,1,Ordinateur portable,2,899.99,2026-09-05
+2,2,Souris sans fil,5,19.99,2026-09-06
+3,3,Clavier mecanique,1,59.99,2026-09-07
+4,1,Ecran 24 pouces,1,179.99,2026-09-08

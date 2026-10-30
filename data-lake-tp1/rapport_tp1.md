@@ -8,8 +8,6 @@
 
 > L'ensemble du projet (docker-compose, données, notebook, architecture et ce rapport) est consultable sur ce dépôt public, dans le dossier `data-lake-tp1/`.
 
----
-
 ## Étape 1 - Arborescence du projet
 
 Création du dossier `data-lake-tp1` avec deux sous-dossiers :
@@ -19,13 +17,11 @@ Création du dossier `data-lake-tp1` avec deux sous-dossiers :
 
 *L'arborescence finale est présentée en fin de rapport.*
 
----
-
 ## Étape 2 - Écriture du `docker-compose.yml`
 
 Le fichier décrit toute la stack en un seul endroit : **MinIO** (stockage S3 des zones), **PostgreSQL** (base source) et **Jupyter** (notebooks Python). Un seul `docker compose up` suffit ensuite pour tout démarrer.
 
-![docker-compose.yml dans VS Code](captures/01_docker_compose_vscode.png)
+![docker-compose.yml dans VS Code](captures/tp1/01_docker_compose_vscode.png)
 
 **Deux adaptations par rapport au sujet :**
 
@@ -33,8 +29,6 @@ Le fichier décrit toute la stack en un seul endroit : **MinIO** (stockage S3 de
 |---|---|
 | `image: cgr.dev/chainguard/minio:latest` | L'image `minio/minio` du sujet n'existe plus sur Docker Hub (voir étape 3). |
 | `"5433:5432"` pour PostgreSQL | Le port 5432 est déjà pris par un PostgreSQL installé sur le poste. Seul le port côté Windows change ; dans le réseau Docker, PostgreSQL reste sur `postgres:5432`. |
-
----
 
 ## Étape 3 - Lancement de la stack
 
@@ -58,13 +52,11 @@ repository does not exist or may require 'docker login'
 
 Les trois conteneurs démarrent :
 
-![docker compose up -d](captures/02_docker_compose_up.png)
+![docker compose up -d](captures/tp1/02_docker_compose_up.png)
 
 Vérification avec `docker compose ps` : les trois services sont `Up`.
 
-![docker compose ps](captures/03_docker_compose_ps.png)
-
----
+![docker compose ps](captures/tp1/03_docker_compose_ps.png)
 
 ## Étape 4 - Création des zones (buckets) dans MinIO
 
@@ -80,9 +72,7 @@ Les trois buckets ont été créés depuis l'interface web MinIO (<http://localh
 
 > Identifiants volontairement en clair : acceptable en local pour la formation, jamais en production.
 
-![Les trois buckets dans la console MinIO](captures/04_create_bucket.png)
-
----
+![Les trois buckets dans la console MinIO](captures/tp1/04_create_bucket.png)
 
 ## Étape 5 - Préparation du jeu de données
 
@@ -91,11 +81,9 @@ Conformément au TP, on prépare deux fichiers d'exemple dans `data/`. Chacun re
 - **`ventes.csv`** : données **structurées**, avec des lignes et des colonnes fixes (id, produit, quantité, prix unitaire, date). C'est le format typique d'un export de base relationnelle.
 - **`clients.json`** : données **semi-structurées**, organisées en objets clé/valeur (id, nom, ville). C'est le format typique d'une réponse d'API.
 
-![ventes.csv dans VS Code](captures/06_vente_csv.png)
+![ventes.csv dans VS Code](captures/tp1/06_vente_csv.png)
 
-![clients.json dans VS Code](captures/05_client_json.png)
-
----
+![clients.json dans VS Code](captures/tp1/05_client_json.png)
 
 ## Étape 6 - Ingestion dans la zone `raw`
 
@@ -109,7 +97,7 @@ cp data/ventes.csv data/clients.json notebooks/
 
 Le notebook installe ensuite `boto3`, se connecte à MinIO, envoie les deux fichiers dans le bucket `raw` et liste le contenu du bucket pour vérification :
 
-![Notebook d'ingestion dans Jupyter](captures/07_jupyter_code.png)
+![Notebook d'ingestion dans Jupyter](captures/tp1/07_jupyter_code.png)
 
 **Points clés du code :**
 
@@ -121,7 +109,7 @@ Le notebook installe ensuite `boto3`, se connecte à MinIO, envoie les deux fich
 
 Les deux fichiers apparaissent dans la console MinIO, dans le bucket `raw` (2 objets, 324 octets au total), sous les dossiers `clients/` et `ventes/` :
 
-![Contenu du bucket raw dans MinIO](captures/08_view_minio.png)
+![Contenu du bucket raw dans MinIO](captures/tp1/08_view_minio.png)
 
 **Intérêt de retrouver les données dans MinIO :**
 
@@ -129,13 +117,11 @@ Les deux fichiers apparaissent dans la console MinIO, dans le bucket `raw` (2 ob
 - **Séparation stockage / calcul** : Jupyter fait le calcul et MinIO stocke. On peut arrêter ou remplacer le notebook sans perdre les données.
 - **Données brutes conservées** : la zone `raw` garde les fichiers tels qu'ils sont arrivés, sans modification. Si un traitement ultérieur est faux, on peut toujours repartir de l'original. La structure des données sera définie au moment de la lecture (*schema-on-read*).
 
----
-
 ## Étape 7 - Documentation de l'architecture
 
 Création du fichier `architecture.md`, livrable demandé par le TP, à la racine du projet. Il résume les trois zones et leur rôle, les outils et leurs ports d'accès, et les deux fichiers ingérés avec leur emplacement dans `raw`.
 
-![architecture.md dans VS Code](captures/09_architecture.png)
+![architecture.md dans VS Code](captures/tp1/09_architecture.png)
 
 ### Schéma de l'architecture
 
@@ -158,13 +144,11 @@ Création du fichier `architecture.md`, livrable demandé par le TP, à la racin
 
 On y retrouve les quatre briques vues en cours (ingestion, stockage, traitement, accès). Pour l'instant, seule la zone `raw` est alimentée : les étapes de nettoyage et d'agrégation viendront dans les prochains TP.
 
----
-
 ## Arborescence finale du projet
 
 La structure suit celle demandée par le TP (`data-lake-tp1/` avec `data/`, `notebooks/`, `docker-compose.yml` et `architecture.md`), avec deux ajouts pour le rendu.
 
-![Arborescence du projet dans VS Code](captures/10_structure_code.png)
+![Arborescence du projet dans VS Code](captures/tp1/10_structure_code.png)
 
 | Élément | Contenu |
 |---|---|
@@ -180,8 +164,6 @@ La structure suit celle demandée par le TP (`data-lake-tp1/` avec `data/`, `not
 | `.gitignore` | Liste des éléments exclus du dépôt Git. |
 
 **Pourquoi `minio/` et `postgres/` mais pas de dossier `jupyter/` dans `data/` ?** Ces dossiers sont les **volumes** déclarés dans `docker-compose.yml` : ils sont créés automatiquement au premier lancement. Les données de MinIO et de PostgreSQL survivent ainsi à l'arrêt ou à la suppression des conteneurs. Jupyter, lui, ne stocke pas de données : son volume est le dossier `notebooks/` (monté en `/home/jovyan/work`), qui existe déjà dans le projet. Il n'a donc pas besoin d'un dossier dans `data/`.
-
----
 
 ## Conclusion
 
