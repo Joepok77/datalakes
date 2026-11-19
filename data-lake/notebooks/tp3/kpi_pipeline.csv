@@ -1,0 +1,4 @@
+format,taille_Mo,ecriture_s,lecture_1_colonne_s,debit_lignes_par_s
+CSV,36.25,2.723,0.692,183621.0
+Parquet,4.04,0.422,0.021,1184834.0
+Parquet partitionné (mois=09),4.64,0.674,0.178,741840.0

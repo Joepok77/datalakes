@@ -1,0 +1,9 @@
+id,client_id,produit,quantite,prix_unitaire,date_commande
+101,1," Souris sans fil ",3,"19,99",2026-08-28
+102,2,CLAVIER MECANIQUE,1,59.99,2026-09-11
+102,2,CLAVIER MECANIQUE,1,59.99,2026-09-11
+103,,Ecran 24 pouces,2,179.99,2026-09-12
+104,3,Souris sans fil,5,N/A,2026-09-13
+105,1,Ordinateur portable,-1,899.99,2026-09-14
+106,4,Ecran 24 pouces,1,"179,99",15/08/2026
+107,99,Clavier mecanique,1,59.99,2026-09-16

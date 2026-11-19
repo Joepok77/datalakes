@@ -1,0 +1,7 @@
+horodatage,etape,source,cible,lignes_lues,lignes_ecrites,lignes_rejetees,regles
+2026-11-19T09:22:31,raw->trusted,api_clients/2026/10/30/users.json,clients/date_traitement=2026-11-19/clients.parquet,10,10,0,"aplatissement JSON, strip, email en minuscules"
+2026-11-19T09:22:32,raw->trusted,fichiers_stock/2026/10/30/stock.csv,stock/date_traitement=2026-11-19/stock.parquet,4,4,0,"R01, typage stock"
+2026-11-19T09:34:39,raw->trusted,postgres_commandes + fichiers_commandes_import,trusted/commandes/date_traitement=2026-11-19/,12,7,4,R01 R02 R03 R05 R06 ; doublons écartés : 1
+2026-11-19T09:36:18,raw->trusted,postgres_commandes + fichiers_commandes_import,trusted/commandes/date_traitement=2026-11-19/,12,7,4,R01 R02 R03 R05 R06 ; doublons écartés : 1
+2026-11-19T09:43:39,trusted->curated,trusted/clients,curated/dim_client/date_traitement=2026-11-19/,10,10,0,R04 pseudonymisation de l'email
+2026-11-19T09:44:29,trusted->curated,trusted/commandes,curated/fait_ventes/,7,7,0,"jointure client, montant, partition annee/mois"

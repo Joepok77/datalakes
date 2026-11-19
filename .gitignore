@@ -1,9 +1,8 @@
 # Supports de cours (slides + sujets de TP, non publiés)
 cours/
 
-# Fichiers internes des conteneurs MinIO / PostgreSQL (lourds, recréés par Docker)
-**/data/minio/
-**/data/postgres/
+# Données (fichiers sources, stockage MinIO et PostgreSQL) : exclues du dépôt, comme demandé au TP 3
+**/data/
 
 # Client MinIO en ligne de commande (si téléchargé)
 mc.exe
