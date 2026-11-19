@@ -6,7 +6,7 @@
 
 **Dépôt GitHub (public) :** <https://github.com/Joepok77/datalakes>
 
-> L'ensemble du projet (docker-compose, données, notebook, architecture et ce rapport) est consultable sur ce dépôt public, dans le dossier `data-lake-tp1/`.
+> L'ensemble du projet (docker-compose, données, notebook, architecture et ce rapport) est consultable sur ce dépôt public, dans le dossier `data-lake/`. Ce dossier s'appelait `data-lake-tp1/` pendant le TP 1, comme dans le sujet ; il a été renommé ensuite, car il sert à tous les TP.
 
 ## Étape 1 - Arborescence du projet
 

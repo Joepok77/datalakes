@@ -6,7 +6,7 @@
 
 **Dépôt GitHub (public) :** <https://github.com/Joepok77/datalakes>
 
-> Le TP 2 repart de l'environnement du TP 1 : même dossier `data-lake-tp1/`, même stack Docker, mêmes buckets MinIO. Le dossier `notebooks/` est rangé par TP (`tp1/`, `tp2/`) : chaque notebook s'exécute dans son dossier, avec ses fichiers.
+> Le TP 2 repart de l'environnement du TP 1 : même dossier de projet (`data-lake-tp1/`, renommé ensuite `data-lake/` car il sert à tous les TP), même stack Docker, mêmes buckets MinIO. Le dossier `notebooks/` est rangé par TP (`tp1/`, `tp2/`) : chaque notebook s'exécute dans son dossier, avec ses fichiers.
 
 ## Étape 1 - Chargement de données de test dans PostgreSQL
 
